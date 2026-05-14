@@ -1,0 +1,54 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Inkbird Wifi Setup",
+        "menu_options": {
+          "cloud": "Sign in with Inkbird email + password",
+          "google": "Sign in with Google (paste idToken or Google ID)"
+        }
+      },
+      "cloud": {
+        "title": "Inkbird account login",
+        "description": "Sign in with the email and password you use in the Inkbird app.",
+        "data": {
+          "username": "Email",
+          "password": "Password",
+          "country_code": "Country code (e.g. 1 for US, 34 for Spain, 44 for UK)",
+          "region": "Tuya region"
+        }
+      },
+      "google": {
+        "title": "Google-bridged Inkbird account",
+        "description": "Paste your **Google account ID** (the 21-digit numeric `sub`). Two ways to get it without exposing your idToken:\n\n**A. OAuth Playground → userinfo (recommended, easiest):**\n1. Open https://developers.google.com/oauthplayground\n2. In Step 1, expand **Google OAuth2 API v2** and tick `https://www.googleapis.com/auth/userinfo.profile`.\n3. Click **Authorize APIs**, sign in with the Google account you use for Inkbird.\n4. In Step 2, click **Exchange authorization code for tokens**.\n5. In Step 3, change the request URL to `https://www.googleapis.com/oauth2/v2/userinfo` and click **Send the request**.\n6. The response contains `\"id\": \"123456789...\"` — that 21-digit number is your `sub`. Copy it here.\n\n**B. Paste a full idToken instead** (we extract `sub` locally and discard the rest):\n- Same steps 1–4 above. The response from step 4 includes an `id_token` field — paste the whole JWT.\n\n**⚠️ Security note:** Inkbird's backend does NOT validate Google idTokens — it trusts whoever supplies a `sub`. Treat your `sub` like a password: anyone who learns it can log into your Inkbird/Tuya account. Full details + how this integration handles it: see README.md → \"Security & privacy\".",
+        "data": {
+          "username": "Email used in Inkbird app",
+          "google_sub": "Numeric Google sub (or full idToken)",
+          "country_code": "Country code (e.g. 1 for US, 34 for Spain, 44 for UK)",
+          "region": "Tuya region"
+        }
+      },
+      "pick_device": {
+        "title": "Select Device",
+        "data": {
+          "device": "Device"
+        }
+      },
+      "confirm": {
+        "title": "Confirm Device",
+        "description": "Found **{name}** ({online})\n- Device ID: `{device_id}`\n- {lan_status}\n\nThe integration will prefer direct LAN polling when reachable, and fall back to Tuya cloud polling otherwise. Press Submit to add the integration."
+      }
+    },
+    "error": {
+      "cannot_connect": "Login failed — check credentials, region, or country code.",
+      "invalid_token": "Couldn't parse a Google sub from that value.",
+      "no_devices": "No devices found on this account.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This device is already configured.",
+      "no_devices": "No devices found on this account.",
+      "unsupported_product": "Your account has device(s), but none of them are supported by this integration yet. Check the Home Assistant log for the Tuya `productId` and open a GitHub issue requesting support."
+    }
+  }
+}

@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# APKs and decompiled sources — too large for git
+*.apk
+inkbird_decoded/
+inkbird_extracted/
+inkbird_java/
+inkbirdapp_java/
+thingsmart_extracted/
+
+# Frida hook scripts and other Claude scratch
+.claude/
+snapshot.json
+
+# Local developer files — not for the repo
+CLAUDE.local.md
+deploy.sh
+tuya_sign.py
+findings.md

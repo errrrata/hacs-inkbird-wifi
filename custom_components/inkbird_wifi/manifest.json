@@ -1,0 +1,18 @@
+{
+  "domain": "inkbird_wifi",
+  "name": "Inkbird Wifi",
+  "version": "1.3.0",
+  "integration_type": "hub",
+  "config_flow": true,
+  "documentation": "https://github.com/errrrata/hacs-inkbird-wifi",
+  "issue_tracker": "https://github.com/errrrata/hacs-inkbird-wifi/issues",
+  "requirements": [
+    "tinytuya>=1.13.0",
+    "pycryptodome>=3.0"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@errrrata"
+  ],
+  "iot_class": "local_polling"
+}
